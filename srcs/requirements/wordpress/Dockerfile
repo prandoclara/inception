@@ -1,6 +1,5 @@
 FROM debian:bullseye
 
-# Update and install required dependencies
 RUN apt-get update && apt-get install -y \
     lsb-release \
     ca-certificates \
@@ -8,7 +7,6 @@ RUN apt-get update && apt-get install -y \
     sudo \
     gnupg2
 
-# Add PHP repository (AVANT d'installer PHP)
 RUN curl -sS https://packages.sury.org/php/README.txt | bash -x
 
 RUN apt-get update && apt-get install -y \
@@ -19,7 +17,6 @@ RUN apt-get update && apt-get install -y \
     php8.0-mysqli \
     mariadb-client
 
-# Continue with the rest of your setup as usual
 RUN mkdir -p /var/www/wordpress
 
 COPY ./wp_conf.sh /
