@@ -1,7 +1,6 @@
 #!/bin/bash
-# Vérifier si WordPress est déjà installé
+
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
-    #---------------------------------------------------wp installation---------------------------------------------------#
     # wp-cli installation
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     # wp-cli permission

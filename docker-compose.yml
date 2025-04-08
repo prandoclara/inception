@@ -23,7 +23,7 @@ services:
     container_name: nginx
     build: ./srcs/requirements/nginx
     ports:
-      - "8443:443"
+      - "443:443"
     depends_on:
       - wordpress
     volumes:
@@ -53,14 +53,14 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /home/claprand/data/mariadb
+      device: /home/$USER/data
       o : bind
       type : none
   wordpress:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/claprand/data/wordpress
+      device: /home/$USER/data
       o : bind
       type : none
 
