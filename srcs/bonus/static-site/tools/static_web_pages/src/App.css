@@ -1,42 +1,125 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;600&display=swap');
+
+body {
+  background-color: #f5f6fa;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Empêche l'effet "écrasé" sur les grands écrans */
+main {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* En-tête */
+header {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  color: hsl(241, 100%, 50%);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: hsl(241, 100%, 50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h3 {
+  font-size: 1rem;
+  margin: 1rem 0 0.3rem 0;
+  font-weight: 600;
+  padding-left: 1rem;
+  color: #111;
 }
 
-.card {
-  padding: 2em;
+p {
+  font-size: 0.8rem;
+  margin: 0.3rem 0 0.6rem;
+  padding-left: 1rem;
 }
 
-.read-the-docs {
-  color: #888;
+ul {
+  padding-left: 1rem;
+  margin: 0.3rem 0 1.2rem;
+}
+
+li {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+  padding-left: 1rem;
+}
+
+a {
+  color: hsl(241, 100%, 50%);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* espace entre la photo et le texte */
+  flex-wrap: wrap; /* pour que ça s'adapte bien en mobile */
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid hsl(241, 100%, 50%);
+}
+
+.header-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.highlighted-title {
+  font-size: 1rem;
+  margin: 0.2rem 0 0.3rem 0;
+  padding-left: 1rem;
+  color: white;
+  background-color: #000;
+  padding: 0.5rem 0.5rem;
+  display: inline-block;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.social-links img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
 }

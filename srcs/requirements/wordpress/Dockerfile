@@ -17,10 +17,17 @@ RUN apt-get update && apt-get install -y \
     php8.0-mysqli \
     mariadb-client
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+ && chmod +x wp-cli.phar \
+ && mv wp-cli.phar /usr/local/bin/wp
+
+ENV PATH="/usr/local/bin:$PATH"
+
+
 RUN mkdir -p /var/www/wordpress
 
 COPY ./wp_conf.sh /
 
 RUN chmod +x /wp_conf.sh
 
-ENTRYPOINT ["./wp_conf.sh"]
+ENTRYPOINT ["/wp_conf.sh"]

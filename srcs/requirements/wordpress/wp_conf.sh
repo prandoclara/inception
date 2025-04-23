@@ -32,5 +32,7 @@ mkdir -p /run/php
 # Modifier la configuration PHP 8.0 pour écouter sur le port 9000
 sed -i 's/listen = \/run\/php\/php8.0-fpm.sock/listen = 9000/g' /etc/php/8.0/fpm/pool.d/www.conf
 
+wp plugin install redis-cache --activate --path=/var/www/wordpress
+
 # Démarrer PHP-FPM 8.0 en premier plan
 exec /usr/sbin/php-fpm8.0 -F
