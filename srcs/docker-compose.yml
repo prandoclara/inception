@@ -60,8 +60,8 @@ services:
     networks:
       - inception
     ports:
-      - "2100:2100"
-      - "2101-2105:2101-2105"
+      - "21:21"
+      - "21000-21010:21000-21010"
     volumes:
       - wordpress:/var/www/wordpress
 # static-site
@@ -83,12 +83,7 @@ services:
     container_name: prometheus
     networks:
       - inception
-# node-exporter
-  node-exporter:
-    build: ./srcs/bonus/node-exporter
-    container_name: node-exporter
-    networks:
-      - inception
+#grafana
   grafana:
     build: ./srcs/bonus/grafana
     container_name: grafana
@@ -98,7 +93,7 @@ services:
       - grafana-data:/var/lib/grafana
     networks:
       - inception
-
+#cadvisor
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.1
     container_name: cadvisor

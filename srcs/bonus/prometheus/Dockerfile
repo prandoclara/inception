@@ -2,7 +2,6 @@ FROM debian:bullseye
 
 RUN apt-get update && apt-get install -y curl tar
 
-# Télécharger Prometheus
 RUN curl -LO https://github.com/prometheus/prometheus/releases/download/v2.50.1/prometheus-2.50.1.linux-amd64.tar.gz \
   && tar -xzf prometheus-2.50.1.linux-amd64.tar.gz \
   && mv prometheus-2.50.1.linux-amd64 /opt/prometheus \

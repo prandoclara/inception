@@ -6,6 +6,6 @@ COPY ./vsftpd.conf /etc/vsftpd.conf
 COPY ./ftp_conf.sh /ftp_conf.sh
 RUN chmod +x /ftp_conf.sh
 
-EXPOSE 2100 2101 2102 2103 2104 2105
+EXPOSE 21 21000 21001 21002 21003 21004 21005 21006 21007 21008 21009 21010
 
 CMD ["/ftp_conf.sh"]
