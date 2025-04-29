@@ -1,26 +1,35 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y \
-    apache2 \
-    php \
-    libapache2-mod-php \
-    php-mysqli \
-    php-pdo \
-    php-mysql \
+# Install dependencies
+RUN apt-get update -y && apt-get install -y \
     curl \
-    unzip \
-    && apt-get clean
+    php \
+    php-fpm \
+    php-mysql && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Supprimer page par défaut Apache
-RUN rm -f /var/www/html/index.html
+# Configure PHP-FPM to listen on 0.0.0.0:8081
+RUN sed -i 's|^listen = /run/php/php7.4-fpm.sock|listen = 0.0.0.0:8081|' /etc/php/7.4/fpm/pool.d/www.conf
 
-# Télécharger Adminer (avec redirection !)
-RUN curl -L -o /var/www/html/index.php https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php
+# Set up Adminer directory
+RUN mkdir -p /var/www/html/adminer && \
+    chown -R www-data:www-data /var/www/html/adminer && \
+    chmod -R 755 /var/www/html/adminer
 
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+# Create the required PHP runtime directory
+RUN mkdir -p /run/php && \
+    chown -R www-data:www-data /run/php
 
-RUN a2enmod php* rewrite
+# Copy the startup script
+COPY ./tools/startup.sh /usr/local/bin/startup.sh
+RUN chmod +x /usr/local/bin/startup.sh
 
-CMD ["apachectl", "-D", "FOREGROUND"]
+# Set the working directory
+WORKDIR /var/www/html/adminer
 
-EXPOSE 80
+# Expose the application port
+EXPOSE 8081
+
+# Define the container startup process
+ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
+CMD [ "php-fpm7.4", "-F" ]

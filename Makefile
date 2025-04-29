@@ -11,7 +11,7 @@ all: up
 
 # Démarrer les services Docker Compose
 up:
-	mkdir -p $(MARIADB_DATA_DIR) $(WORDPRESS_DATA_DIR) $(GRAFANA_DATA_DIR)
+	sudo mkdir -p $(MARIADB_DATA_DIR) $(WORDPRESS_DATA_DIR) $(GRAFANA_DATA_DIR)
 	docker compose -f $(COMPOSE_FILE) up -d --build
 
 # Arrêter et supprimer les services Docker Compose + supprimer les volumes
