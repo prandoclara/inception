@@ -1,7 +1,7 @@
 # Makefile pour Inception - Docker Compose
 
 COMPOSE_FILE = ./srcs/docker-compose.yml
-DATA_DIR = home/claprand/data
+DATA_DIR = $(HOME)/data
 MARIADB_DATA_DIR = $(DATA_DIR)/mariadb
 WORDPRESS_DATA_DIR = $(DATA_DIR)/wordpress
 GRAFANA_DATA_DIR = $(DATA_DIR)/grafana
