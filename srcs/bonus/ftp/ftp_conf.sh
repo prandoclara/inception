@@ -9,11 +9,9 @@ fi
 
 mkdir -p /var/run/vsftpd/empty
 
-# Donner les bons droits
 chown -R ftpuser:ftpuser /var/www/wordpress
 
 rm -f /var/run/vsftpd/vsftpd.pid
 
-# Lancer vsftpd
 echo "🚀 Démarrage de vsftpd..."
 exec /usr/sbin/vsftpd /etc/vsftpd.conf

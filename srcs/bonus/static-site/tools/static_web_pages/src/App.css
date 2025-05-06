@@ -78,8 +78,7 @@ a:hover {
 .header-content {
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* espace entre la photo et le texte */
-  flex-wrap: wrap; /* pour que ça s'adapte bien en mobile */
+  gap: 1.5rem;
 }
 
 .profile-pic {
@@ -103,23 +102,4 @@ a:hover {
   background-color: #000;
   padding: 0.5rem 0.5rem;
   display: inline-block;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.social-links img {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.social-links img:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
 }
